@@ -1,5 +1,5 @@
-const { Error } = require("mongoose");
-const Article = require("../database/models/article-model");
+const { Error } = require('mongoose');
+const Article = require('../database/models/article-model');
 
 exports.createArticle = async (req, res, next) => {
   try {
@@ -18,7 +18,7 @@ exports.getArticle = async (req, res, next) => {
     const article = await Article.findById(req.params.id);
 
     if (!article) {
-      return res.status(404).json({ message: "No Article found." });
+      return res.status(404).json({ message: 'No Article found.' });
     }
 
     return res.status(200).json(article);
@@ -41,13 +41,13 @@ exports.getArticles = async (req, res, next) => {
 
     const totalArticles = await Article.find().countDocuments();
     const articles = await Article.find(query)
-      .select("-__v")
+      .select('-__v')
       .sort(sort)
       .limit(size)
       .skip((page - 1) * size);
 
     if (!articles) {
-      return res.status(404).json({ message: "No Article found." });
+      return res.status(404).json({ message: 'No Article found.' });
     }
 
     return res
@@ -63,7 +63,7 @@ exports.upadteArticle = async (req, res, next) => {
     const updatedArticle = await Article.findById(req.params.id);
 
     if (!updatedArticle) {
-      return res.status(404).json({ message: "No Article found." });
+      return res.status(404).json({ message: 'No Article found.' });
     }
 
     const { title, content } = req.body;
@@ -86,7 +86,7 @@ exports.deleteArticle = async (req, res, next) => {
     const article = await Article.findById(req.params.id);
 
     if (!article) {
-      return res.status(404).json({ message: "No Article found." });
+      return res.status(404).json({ message: 'No Article found.' });
     }
 
     await Article.findByIdAndDelete(article.id);

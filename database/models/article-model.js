@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const articleSchema = new mongoose.Schema({
   title: {
@@ -23,5 +23,5 @@ const articleSchema = new mongoose.Schema({
   },
 });
 
-const Article = mongoose.model("articles", articleSchema);
+const Article = mongoose.model('articles', articleSchema);
 module.exports = Article;
